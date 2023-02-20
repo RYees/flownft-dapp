@@ -1,7 +1,4 @@
 {
-	"contracts" : {
-		"MyNFT": "./contracts/MyNFT.cdc"
-	},
 	"networks": {
 		"emulator": "127.0.0.1:3569",
 		"mainnet": "access.mainnet.nodes.onflow.org:9000",
@@ -11,15 +8,10 @@
 	"accounts": {
 		"emulator-account": {
 			"address": "f8d6e0586b0a20c7",
-			"key": "51144619f60ac943cfcde4567cfc3444db4a463522d3e07c45434c77df836c9a"
-		}
-	},
-	"deployments": {
-		"testnet": {
-			"emulator-account": [
-				"MyNFT",
-				"NFTMarketplace"
-			]
+			"key": "f33b894e0acf9a7fc32812f6eeb2dd4add0538c524c91a3028ff8c59dd8747ed"
+		},
+		"test": {
+			"fromFile": "test.private.json"
 		}
 	}
 }

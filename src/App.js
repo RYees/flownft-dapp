@@ -4,24 +4,25 @@ import './App.css';
 // import SaleCollection from "./SaleCollection.js";
 
 import * as fcl from "@onflow/fcl";
-// import * as t from "@onflow/types";
+import * as t from "@onflow/types";
 import {useState, useEffect} from 'react';
-// import {create} from 'ipfs-http-client';
-// import {mintNFT} from "./cadence/transactions/mint_nft.js";
+import {create} from 'ipfs-http-client';
+import {mintNFT} from "./cadence/transactions/mint_nft.js";
 // import {setupUserTx} from "./cadence/transactions/setup_user.js";
 // import {listForSaleTx} from "./cadence/transactions/list_for_sale.js";
 // import {unlistFromSaleTx} from "./cadence/transactions/unlist_from_sale.js";
 
-// const client = create('https://ipfs.infura.io:5001/api/v0');
+const client = create('https://ipfs.infura.io:5001/api/v0');
 
+//0x313f4090b991a391
 fcl.config()
   .put("accessNode.api", "https://access-testnet.onflow.org")
   .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
 
 function App() {
   const [user, setUser] = useState();
-  // const [nameOfNFT, setNameOfNFT] = useState('');
-  // const [file, setFile] = useState();
+  const [nameOfNFT, setNameOfNFT] = useState('');
+  const [file, setFile] = useState();
   // const [id, setID] = useState();
   // const [price, setPrice] = useState();
   // const [address, setAddress] = useState();
@@ -37,30 +38,28 @@ function App() {
     fcl.authenticate();
   }
 
-  // const mint = async () => {
-
-  //   try {
-  //     const added = await client.add(file)
-  //     const hash = added.path;
-
-  //     const transactionId = await fcl.send([
-  //       fcl.transaction(mintNFT),
-  //       fcl.args([
-  //         fcl.arg(hash, t.String),
-  //         fcl.arg(nameOfNFT, t.String)
-  //       ]),
-  //       fcl.payer(fcl.authz),
-  //       fcl.proposer(fcl.authz),
-  //       fcl.authorizations([fcl.authz]),
-  //       fcl.limit(9999)
-  //     ]).then(fcl.decode);
+  const mint = async () => {
+    try {
+      const added = await client.add(file)
+      const hash = added.path;
+      const transactionId = await fcl.send([
+        fcl.transaction(mintNFT),
+        fcl.args([
+          fcl.arg(hash, t.String),
+          fcl.arg(nameOfNFT, t.String)
+        ]),
+        fcl.payer(fcl.authz),
+        fcl.proposer(fcl.authz),
+        fcl.authorizations([fcl.authz]),
+        fcl.limit(9999)
+      ]).then(fcl.decode);
   
-  //     console.log(transactionId);
-  //     return fcl.tx(transactionId).onceSealed();
-  //   } catch(error) {
-  //     console.log('Error uploading file: ', error);
-  //   }
-  // }
+      console.log(transactionId);
+      return fcl.tx(transactionId).onceSealed();
+    } catch(error) {
+      console.log('Error uploading file: ', error);
+    }
+  }
 
   // const setupUser = async () => {
   //   const transactionId = await fcl.send([
@@ -114,6 +113,13 @@ function App() {
       <h1>Account address: {user && user.addr ? user.addr : ''}</h1>
       <button onClick={() => logIn()}>Log In</button>
       <button onClick={() => fcl.unauthenticate()}>Log Out</button>
+      
+      <div>
+        <input type="text" onChange={(e) => setNameOfNFT(e.target.value)} />
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <button onClick={() => mint()}>Mint</button>
+      </div>
+
       {/*<button onClick={() => setupUser()}>Setup User</button>
 
       <div>

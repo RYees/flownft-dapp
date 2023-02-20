@@ -78,3 +78,4 @@ pub contract MyNFT: NonFungibleToken {
     self.totalSupply = 0
   }
 }
+ 
