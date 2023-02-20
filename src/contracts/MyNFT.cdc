@@ -1,4 +1,4 @@
-import NonFungibleToken from 0x01
+import NonFungibleToken from 0x631e88ae7f1d7c20
 
 pub contract MyNFT: NonFungibleToken {
 
@@ -23,6 +23,8 @@ pub contract MyNFT: NonFungibleToken {
   }
 
   pub resource interface CollectionPublic {
+    //pub fun getIDs(): [UInt64]
+    //pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
     pub fun borrowEntireNFT(id: UInt64): &MyNFT.NFT
   }
 
@@ -47,11 +49,11 @@ pub contract MyNFT: NonFungibleToken {
     }
 
     pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
-      return (&self.ownedNFTs[id] as  &NonFungibleToken.NFT?)!
+      return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
     }
 
     pub fun borrowEntireNFT(id: UInt64): &MyNFT.NFT {
-      let reference = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)
+      let reference = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
       return reference as! &MyNFT.NFT
     }
 
