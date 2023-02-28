@@ -38,10 +38,10 @@ function App() {
   const [user, setUser] = useState();
   const [nameOfNFT, setNameOfNFT] = useState('');
   const [file, setFile] = useState();
-  // const [id, setID] = useState();
-  // const [price, setPrice] = useState();
-  // const [address, setAddress] = useState();
-  // const [officialAddress, setOfficialAddress] = useState('');
+  const [id, setID] = useState();
+  const [price, setPrice] = useState();
+  const [address, setAddress] = useState();
+  const [officialAddress, setOfficialAddress] = useState('');
 
   useEffect(() => {
     // sets the `user` variable to the person that is logged in through Blocto
@@ -76,52 +76,52 @@ function App() {
     }
   }
 
-  // const setupUser = async () => {
-  //   const transactionId = await fcl.send([
-  //     fcl.transaction(setupUserTx),
-  //     fcl.args([]),
-  //     fcl.payer(fcl.authz),
-  //     fcl.proposer(fcl.authz),
-  //     fcl.authorizations([fcl.authz]),
-  //     fcl.limit(9999)
-  //   ]).then(fcl.decode);
+  const setupUser = async () => {
+    const transactionId = await fcl.send([
+      fcl.transaction(setupUserTx),
+      fcl.args([]),
+      fcl.payer(fcl.authz),
+      fcl.proposer(fcl.authz),
+      fcl.authorizations([fcl.authz]),
+      fcl.limit(9999)
+    ]).then(fcl.decode);
 
-  //   console.log(transactionId);
-  //   return fcl.tx(transactionId).onceSealed();
-  // }
+    console.log(transactionId);
+    return fcl.tx(transactionId).onceSealed();
+  }
 
-  // const listForSale = async () => {
-  //   const transactionId = await fcl.send([
-  //     fcl.transaction(listForSaleTx),
-  //     fcl.args([
-  //       fcl.arg(parseInt(id), t.UInt64),
-  //       fcl.arg(price, t.UFix64)
-  //     ]),
-  //     fcl.payer(fcl.authz),
-  //     fcl.proposer(fcl.authz),
-  //     fcl.authorizations([fcl.authz]),
-  //     fcl.limit(9999)
-  //   ]).then(fcl.decode);
+  const listForSale = async () => {
+    const transactionId = await fcl.send([
+      fcl.transaction(listForSaleTx),
+      fcl.args([
+        fcl.arg(parseInt(id), t.UInt64),
+        fcl.arg(price, t.UFix64)
+      ]),
+      fcl.payer(fcl.authz),
+      fcl.proposer(fcl.authz),
+      fcl.authorizations([fcl.authz]),
+      fcl.limit(9999)
+    ]).then(fcl.decode);
 
-  //   console.log(transactionId);
-  //   return fcl.tx(transactionId).onceSealed();
-  // }
+    console.log(transactionId);
+    return fcl.tx(transactionId).onceSealed();
+  }
 
-  // const unlistFromSale = async () => {
-  //   const transactionId = await fcl.send([
-  //     fcl.transaction(unlistFromSaleTx),
-  //     fcl.args([
-  //       fcl.arg(parseInt(id), t.UInt64)
-  //     ]),
-  //     fcl.payer(fcl.authz),
-  //     fcl.proposer(fcl.authz),
-  //     fcl.authorizations([fcl.authz]),
-  //     fcl.limit(9999)
-  //   ]).then(fcl.decode);
+  const unlistFromSale = async () => {
+    const transactionId = await fcl.send([
+      fcl.transaction(unlistFromSaleTx),
+      fcl.args([
+        fcl.arg(parseInt(id), t.UInt64)
+      ]),
+      fcl.payer(fcl.authz),
+      fcl.proposer(fcl.authz),
+      fcl.authorizations([fcl.authz]),
+      fcl.limit(9999)
+    ]).then(fcl.decode);
 
-  //   console.log(transactionId);
-  //   return fcl.tx(transactionId).onceSealed();
-  // }
+    console.log(transactionId);
+    return fcl.tx(transactionId).onceSealed();
+  }
 
   return (
     <div className="App">
@@ -135,7 +135,7 @@ function App() {
         <button onClick={() => mint()}>Mint</button>
       </div>
 
-      {/*<button onClick={() => setupUser()}>Setup User</button>
+      <button onClick={() => setupUser()}>Setup User</button>
 
       <div>
         <input type="text" onChange={(e) => setAddress(e.target.value)} />
@@ -168,7 +168,7 @@ function App() {
         :
         null
       }
-       */}
+      
       
     </div>
   );
