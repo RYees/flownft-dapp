@@ -14,6 +14,21 @@ import {mintNFT} from "./cadence/transactions/mint_nft.js";
 
 const client = create('https://ipfs.infura.io:5001/api/v0');
 
+// const projectId = 'xx';
+// const projectSecret = 'xx';
+// const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
+// const options = {
+//   host: 'ipfs.infura.io',
+//   protocol: 'https',
+//   port: 5001,
+//   apiPath: '/ipfs/api/v0',
+//   headers: {
+//     authorization: auth,
+//   },
+// };
+// const dedicatedEndPoint = 'https://xx.infura-ipfs.io';
+// const client = create(options);
+
 //0x313f4090b991a391
 fcl.config()
   .put("accessNode.api", "https://access-testnet.onflow.org")
