@@ -1,10 +1,10 @@
-import './App.css';
+import '../App.css';
 
 import * as fcl from "@onflow/fcl";
 import * as t from "@onflow/types";
 import {useState, useEffect} from 'react';
-import {getSaleNFTsScript} from "./cadence/scripts/get_sale_nfts";
-import {purchaseTx} from "./cadence/transactions/purchase.js";
+import {getSaleNFTsScript} from "../cadence/scripts/get_sale_nfts";
+import {purchaseTx} from "../cadence/transactions/purchase.js";
 
 function SaleCollection(props) {
   const [nfts, setNFTs] = useState([]);

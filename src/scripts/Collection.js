@@ -1,9 +1,9 @@
-import './App.css';
+import '../App.css';
 
 import * as fcl from "@onflow/fcl";
 import * as t from "@onflow/types";
 import {useState, useEffect} from 'react';
-import {getNFTsScript} from "./cadence/scripts/get_nfts.js";
+import {getNFTsScript} from "../cadence/scripts/get_nfts.js";
 
 
 function Collection(props) {
