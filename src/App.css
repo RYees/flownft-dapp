@@ -1,38 +1,61 @@
 .App {
-  text-align: center;
+  background-color: black;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.heading {
+  font-size: 4rem;
+  width: 45%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn {
+  background-color: rgb(255, 104, 16);
+  padding: 15px 10px 15px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btn:hover {
+  background-color: rgba(255, 104, 16, 0.575);
+  color: #fff;
+}
+
+.head-box {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.titleadd {
+  color: rgb(255, 104, 16);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.titleadd-h3 {
+  float: right;
 }
+
+.endadd {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 2rem;
+  height: 4rem;
+  width: 14rem;
+  margin-top: 0.5rem;
+}
+
+.image {
+  margin-top: -4rem;
+  height: 20rem;
+  
+}
+
+.vid {
+  margin-top: -10rem;
+}
+
+.inp {
+  height: 2rem;
+  width: 40rem;
+}
+

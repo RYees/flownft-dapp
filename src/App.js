@@ -11,7 +11,7 @@ import {mintNFT} from "./cadence/transactions/mint_nft.js";
 import {setupUserTx} from "./cadence/transactions/setup_user.js";
 import {listForSaleTx} from "./cadence/transactions/list_for_sale.js";
 import {unlistFromSaleTx} from "./cadence/transactions/unlist_from_sale.js";
-
+import img1 from './images/video.mp4'
 const client = create('https://ipfs.infura.io:5001/api/v0');
 
 // const projectId = 'xx';
@@ -125,34 +125,47 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Account address: {user && user.addr ? user.addr : ''}</h1>
-      <button onClick={() => logIn()}>Log In</button>
-      <button onClick={() => fcl.unauthenticate()}>Log Out</button>
-      
+     <div className='head-box'>
+        <div className='titleadd'>
+          <h1 className='heading'>Unique Natural Moments NFT Marketplace</h1>
+          <h3 className='titleadd-h3'><small>Account address:</small> {user && user.addr ? user.addr : ''}</h3>
+        </div>
+
+        <div className='endadd'>
+          <button className='btn' onClick={() => logIn()}>Sign In</button>
+          <button className='btn' onClick={() => fcl.unauthenticate()}>Sign Out</button>
+        </div>
+     </div>
+
+     {/* <div >
+       <img src={img1} className='image' alt="fire"/>
+     </div> */}
+
+     <div >
+      <video className='vid' width="320" height="340" controls>
+          <source src={img1} type="video/mp4"/>
+        </video>
+     </div>
+
+
       <div>
-        <input type="text" onChange={(e) => setNameOfNFT(e.target.value)} />
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button onClick={() => mint()}>Mint</button>
+        <input className='inp' type="text" onChange={(e) => setNameOfNFT(e.target.value)} />
+        <input className='inp' type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <button className='btn' onClick={() => mint()}>Mint</button>
       </div>
 
-      <button onClick={() => setupUser()}>Setup User</button>
+      <button className='btn' onClick={() => setupUser()}>Setup User</button>
 
       <div>
-        <input type="text" onChange={(e) => setAddress(e.target.value)} />
-        <button onClick={() => setOfficialAddress(address)}>Search</button>
+        <input className='inp' type="text" onChange={(e) => setAddress(e.target.value)} />
+        <button className='btn' onClick={() => setOfficialAddress(address)}>Search</button>
       </div>
 
       <div>
-        <input type="text" onChange={(e) => setNameOfNFT(e.target.value)} />
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button onClick={() => mint()}>Mint</button>
-      </div>
-
-      <div>
-        <input type="text" onChange={(e) => setID(e.target.value)} />
-        <input type="text" onChange={(e) => setPrice(e.target.value)} />
-        <button onClick={() => listForSale()}>Lift NFT for Sale</button>
-        <button onClick={() => unlistFromSale()}>Unlist an NFT from Sale</button>
+        <input className='inp' type="text" onChange={(e) => setID(e.target.value)} />
+        <input className='inp' type="text" onChange={(e) => setPrice(e.target.value)} />
+        <button className='btn' onClick={() => listForSale()}>Lift NFT for Sale</button>
+        <button className='btn' onClick={() => unlistFromSale()}>Unlist an NFT from Sale</button>
       </div>
 
       { user && user.addr && officialAddress && officialAddress !== ''
